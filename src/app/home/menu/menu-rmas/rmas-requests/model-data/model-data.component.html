@@ -1,0 +1,311 @@
+<!-- SECCION PRINCIPAL -->
+<div style="background-color: #bcbec0;">
+  <mat-card style="background-color:#e6e7e8;">
+
+    <!-- PANEL HEADER: HEADER CON TITULO DE SECCION Y BOTON PARA CERRAR VENTANA -->
+    <mat-card-header style="font-size:16px; opacity:1;">
+
+      <div class="row" style="width:100%;">
+
+        <!-- TITULO VENTANA -->
+        <div class="col">
+
+          <i style="color:#414042;" class="fa fa-user w3-large">
+          </i>&nbsp;<strong style="color:#414042;">Model Series</strong>
+
+        </div>
+
+        <!-- BOTON: CERRAR VENTANA -->
+        <div class="col" style="text-align:right;">
+
+          <!-- BOTON: CERRAR VENTANA -->
+          <button mat-mini-fab
+                  style="width: 32px; height: 32px;
+                         margin-top: -10px; margin-right: -30px;
+                         background-color:#ad1a1a;"
+                  matTooltip="Close window"
+                  (click)="Close();">
+            <i class="fa fa-close w3-small" style="color:white;"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+    </mat-card-header>
+
+    <!-- SECCION: MODEL SERIES -->
+    <mat-card-content>
+
+      <div class="row" style="width:120px;">
+        <div class="col" style="height:161px;">
+
+          <!-- CAMPOS: DATOS DE LA VENTANA -->
+          <table>
+
+            <tr><td><br /></td></tr>
+
+            <!-- CAMPOS: DATOS DE LA VENTANA -->
+            <tr>
+
+              <!-- COLUMNA #01 -->
+              <td valign="top">
+
+                <!-- TEXTBOX: MODELO -->
+                <div class="row">
+
+                  <!-- TEXTBOX: MODELO -->
+                  <table style="display: block; border-radius:15px; width:360px;
+                          background:white; margin-left:15px;">
+
+                    <thead>
+
+                      <tr><td></td></tr>
+
+                      <!-- TEXTBOX: MODELO -->
+                      <tr style="text-align:left;">
+
+                        <td>
+                          <i class="fa fa-bullseye"></i>&nbsp;<strong>Model: </strong>
+                        </td>
+
+                        <td valign="middle">
+                          <input class="form-control" [(ngModel)]="_Modelo" disabled
+                                 style="height:25px; width:130px; margin-left:15px;" />
+                        </td>
+
+                      </tr>
+
+                      <tr><td></td></tr>
+
+                    </thead>
+
+                  </table>
+
+                </div>
+
+                <div class="row" style="height:5px;"></div>
+
+                <!-- TEXTBOX, BUTTON: SERIAL NUMBER, AGREGAR SERIE -->
+                <div class="row">
+
+                  <table style="display: block; border-radius:15px; width:360px;
+                                background:white; margin-left:15px;">
+
+                    <thead>
+
+                      <tr><td></td></tr>
+
+                      <!-- TEXTBOX, BUTTON: SERIAL NUMBER, AGREGAR SERIE -->
+                      <tr style="text-align:left;">
+
+                        <!-- TEXTBOX: SERIAL NUMBER -->
+                        <td>
+                          <input type="text" class="form-control"
+                                 style="width:200px; height:25px;"
+                                 placeholder="Write a Serial Number"
+                                 disabled="{{ !_IsBtnAniadir }}" />
+                        </td>
+
+                        <!-- BUTTON: AGREGAR SERIE -->
+                        <td>
+
+                          <button mat-flat-button
+                                  (click)="BtnAniadir_OnClick();"
+                                  style=" width: 120px; height:24px; font-size:11px;
+                                  background-color:#808285;
+                                  border-radius:20px; margin-left:20px;"
+                                  matTooltip="Add Serie for {{ _Modelo }}"
+                                  disabled="{{ !_IsBtnAniadir }}">
+
+                            <i class="fa fa-plus"></i>&nbsp;Add
+
+                          </button>
+
+                        </td>
+
+                      </tr>
+
+                      <tr><td></td></tr>
+
+                    </thead>
+
+                  </table>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          </table>
+
+          <table><tr><td></td></tr></table>
+
+          <!-- TABLE: LISTADO DE SERIES CAPTURADAS -->
+          <table class="table" style="overflow-y:auto; height:210px;
+                                      display:block; border-radius:10px;
+                                      background:white; width:360px;
+                                      margin-left:5px;">
+
+
+            <tbody>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">actualRow.RES_SERIE</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              @for ( actualRow of dtDatos; track actualRow ){
+
+              <tr style="text-align:left;">
+                <td style="width:400px;">{{ actualRow.RES_SERIE }}</td>
+                <td style="width:300px;">
+                  @if(_IsBtnEliminar){
+                  <button mat-mini-fab style="width:25px; height:25px;"
+                          matTooltip="Delete Serie"
+                          (click)="BtnEliminar_OnClick();">
+                    <i class="fa fa-close w3-small" style="color:white;"></i>
+                  </button>
+                  }
+                </td>
+
+              </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+          <!-- BOTONES: GUARDAR DATOS, ELIMINAR TODAS LAS SERIES -->
+          <table>
+            <tr>
+
+              <!-- BOTON: GUARDAR DATOS -->
+              <td>
+                <button mat-flat-button
+                        style=" margin-left: 10px; width: 120px;
+                          background-color:#ad1a1a;"
+                        matTooltip="Save Data"
+                        disabled="{{ !_IsBtnGuardar }}"
+                        (click)="BtnGuardar_OnClick();">
+                  <i class="fa fa-save"></i> Save
+                </button>
+              </td>
+
+              <!-- BOTON: ELIMINAR TODAS LAS SERIES -->
+              <td>
+                <button mat-flat-button
+                        style="margin-left: 100px; width: 120px;
+                        background-color: #808285; "
+                        matTooltip="Delete All Series Captured"
+                        disabled="{{ !_IsBtnEliminar }}"
+                        (click)="BtnBorrarSeries_OnClick();">
+                  <i class="fa fa-eraser"></i> Delete All
+                </button>
+              </td>
+
+            </tr>
+          </table>
+
+        </div>
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

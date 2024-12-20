@@ -1,0 +1,156 @@
+
+<!-- SECCION: TABLA ROLES -->
+<mat-card style="color:black;">
+
+  <!-- PANEL HEADER: HEADER CON TITULO DE SECCION Y BOTON DE CREACION DE ROL NUEVO -->
+  <mat-card-header style="font-size:16px; opacity:1;">
+
+    <div class="row" style="width:100%;">
+
+      <div class="col" style="font-size:16px; opacity:0.6;">
+
+        <i class="fa fa-address-card"></i>&nbsp;<strong>Roles</strong>
+
+      </div>
+
+      <div class="col"></div>
+
+      <div class="col" style="text-align:right;">
+
+        <!-- BOTON: CREAR ROL NUEVO -->
+        <button mat-mini-fab
+                style="margin-top:-10px; margin-right:-30px; background-color:#ad1a1a;"
+                matTooltip="Create a New Rol"
+                (click)="btnActions_Click(0,'','');">
+          <i class="fa fa-user-plus w3-large" style="color:white;"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </mat-card-header>
+
+  <br />
+
+  <mat-card-content>
+
+    <!-- INPUT / PAGINATOR -->
+    <div class="row">
+
+      <!-- INPUT: BUSQUEDA -->
+      <div class="col busqueda">
+
+        <!-- INPUT: BUSQUEDA -->
+          <mat-form-field appearance="outline" style="width:600px; margin-top:2px;">
+            <input  matInput style="  transform: scale(1.5);
+                                      font-size: 16px;
+                                      margin-left: 140px;"
+                    placeholder="Type to Search {{ _BusquedaPlaceHolder }}"
+                    [(ngModel)]="_Busqueda"
+                    (input)="txtBuscar_OnKeyDown()" />
+          </mat-form-field>
+
+      </div>
+
+      <!-- PAGINATOR: LISTA DE USUARIOS DIVIDIDA EN PAGINAS -->
+      <div class="col">
+
+        <!-- PAGINATOR: LISTA DE USUARIOS DIVIDIDA EN PAGINAS -->
+        <mat-paginator #paginator
+                        [pageSize]="aiPageSize"
+                        [pageSizeOptions]="[5, 10, 20]"
+                        [showFirstLastButtons]="true"
+                        [length]="aiTotalSize"
+                        [pageIndex]="aiCurrentPage"
+                        (page)="matPage_Change($event)"
+                        style="background:#AD1A1A">
+
+        </mat-paginator>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE: TABLA ROLES CON ORDENAMIENTOS matSort -->
+    <div class="mat-elevation-z8 table-responsive">
+
+      <table class="table table-striped hover" matSort (matSortChange)="SortingTable($event)">
+
+        <!-- TABLE: COLUMNAS -->
+        <thead>
+          <tr style="text-align:left;">
+
+            <th mat-sort-header="Name">
+              <i class="fa fa-address-card w3-large"></i>&nbsp;Rol Name
+            </th>
+
+            <th mat-sort-header="No_Users">
+              <i class="fa fa-book w3-large"></i>&nbsp; Users No.
+            </th>
+
+            <th>
+              <i class="fa fa-bullseye w3-large"></i>&nbsp;Actions
+            </th>
+
+          </tr>
+        </thead>
+
+        <!-- TABLE: LISTADO DE ROLES EN BD -->
+        <tbody>
+
+          <tr><mat-divider></mat-divider></tr>
+
+          @for ( actualRow of dtDatos; track actualRow ){
+
+          <tr style="text-align:left;">
+            <td>{{ actualRow.RES_ROL }}</td>
+            <td>{{ actualRow.RES_NO_USUARIOS }}</td>
+
+            <!-- TABLE: BOTONES DE ACCIONES -->
+            <td>
+              <button mat-mini-fab
+                      [matMenuTriggerFor]="menu"
+                      style="background-color: #BCBEC0; "
+                      matTooltip="View Options">
+                <mat-icon>menu</mat-icon>
+              </button>&nbsp;&nbsp;
+              <mat-menu #menu="matMenu">
+
+                <button mat-menu-item (click)="btnActions_Click(1,actualRow.RES_ROL,actualRow.RES_ROL_ID);">
+                  <i class="fa fa-eye w3-large" style="margin-left:5px;"></i>
+                  <span style="padding-top: 11px;">&nbsp;View</span>
+                </button>
+
+                <button mat-menu-item (click)="btnActions_Click(2,actualRow.RES_ROL,actualRow.RES_ROL_ID);">
+                  <i class="fa fa-edit w3-large" style="margin-left:5px;"></i>
+                  <span style="padding-top: 11px;">&nbsp;Edit</span>
+                </button>
+
+              </mat-menu>
+
+              <button mat-mini-fab
+                      matTooltip="Delete Rol"
+                      style="background-color:#ad1a1a;"
+                      (click)="btnActions_Click(3,actualRow.RES_ROL,actualRow.RES_ROL_ID);">
+                <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
+              </button>
+
+            </td>
+
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- --------------------------------------- -->
+
+  </mat-card-content>
+
+</mat-card>
+

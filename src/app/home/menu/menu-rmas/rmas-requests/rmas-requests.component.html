@@ -1,0 +1,569 @@
+<!-- SECCION: HEADER / AGREGAR -->
+<mat-card style="color:black;">
+
+  <!-- PANEL HEADER: HEADER CON TITULO DE SECCION -->
+  <mat-card-header style="font-size:16px; opacity:0.6;">
+    <i class="fa fa-plus"></i>&nbsp;<strong>Create New Request</strong>
+  </mat-card-header>
+
+  <br />
+
+  <!-- PANEL: AGREGAR -->
+  <mat-card-content>
+
+    <div class="row">
+      <div class="col" style="margin-top:-25px; margin-left:10px;">
+
+        <!-- TEXTBOXes, COMBOBOXes BUTTONs: ID RMA, #TICKET, ... -->
+        <div class="row">
+
+          <!-- TEXTBOXes, COMBOBOXes, GRID -->
+          <div class="col-9">
+
+            <!-- TEXTBOXes, COMBOBOXes -->
+            <div class="row">
+
+              <!-- TEXTBOX: ID RMA -->
+              <div class="col">
+
+                <div class="row">
+                  <strong style="margin-top: 20px; margin-left: 5px; font-size:16px; opacity:0.7;">ID RMA:</strong>
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <input type="number" class="form-control" [(ngModel)]="_IdRMA"
+                           style="width: 150px; margin-top: 10px;" disabled />
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- TEXTBOX: #TICKET -->
+              <div class="col">
+
+                <div class="row">
+                  <strong style="margin-top: 20px; margin-left: 5px; font-size:16px; opacity:0.7;">#Ticket:</strong>
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <input type="text" class="form-control" [(ngModel)]="_Ticket"
+                           style="width: 150px; margin-top: 10px;" disabled />
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- COMBOBOX: CLIENTES -->
+              <div class="col">
+
+                <div class="row">
+                  <strong style="margin-top: 20px; margin-left: 5px; font-size:16px; opacity:0.7;">Customer:</strong>
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <select class="form-control valid" [(ngModel)]="_Customer"
+                            style="width: 350px; margin-top: 10px;">
+
+                      <option value="" selected>Select one</option>
+
+                      @for ( actualRow of dtCustomer; track actualRow ){
+
+                      <option [value]="actualRow.RES_CUSTOMER_ID">{{ actualRow.RES_DESCRIPCION }}</option>
+
+                      }
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- COMBOBOX: ALMACEN DEVOLUCION -->
+              <div class="col">
+
+                <div class="row">
+                  <strong style="margin-top: 20px; margin-left: 5px; font-size:16px; opacity:0.7;">Return Warehouse:</strong>
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <select class="form-control valid" [(ngModel)]="_ReturnWareHouse"
+                            style="width: 300px; margin-top: 10px;">
+
+                      <option value="" selected>Select one</option>
+
+                      @for ( actualRow of dtReturnWareHouse; track actualRow ){
+
+                      <option [value]="actualRow.RES_RETURNWAREHOUSE_ID">{{ actualRow.RES_DESCRIPCION }}</option>
+
+                      }
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col"></div>
+
+            </div>
+
+            <!-- TEXTBOX, GRID -->
+            <div class="row">
+
+              <!-- TEXTBOX: COMENTARIOS -->
+              <div class="col">
+
+                <div class="row">
+                  <strong style="margin-top: 20px; margin-left: 5px; font-size:16px; opacity:0.7;">Add Comments:</strong>
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <textarea class="form-control"
+                              style="width: 430px; height:100px; margin-top: 10px;">{{ _Comments }}
+                    </textarea>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <br />
+                  <br />
+                  <br />
+                </div>                
+
+                <div class="row">
+
+                  <div class="col">
+                    <strong style="margin-top: 20px; margin-left: 5px; font-size:16px; opacity:0.7;">
+                      Status:
+                    </strong>
+                  </div>
+
+                  <div class="col">
+                    <p style="color:red; font-style:italic;
+                              margin-left:-45px;">{{ _StatusDescription }}</p>
+                  </div>
+
+                  <div class="col"></div>
+                  <div class="col"></div>
+
+                </div>
+
+              </div>
+
+              <!-- GRID: MODELO, CANTIDAD, SERIES -->
+              <div class="col-7">
+
+                <!-- BUTTON: AGREGAR NUEVA CAPTURA -->
+                <div class="row" style="margin-top:20px;" >
+                  <div class="col">
+
+                    <strong style=" margin-top: 20px; margin-left: 5px;
+                                    font-size:16px; opacity:0.7;">Add Series:</strong>
+                    &nbsp;&nbsp;
+                    <button mat-flat-button
+                            (click)="btnModelSeriesCapture_Click(0);"
+                            style=" width: 150px; font-size:11px;
+                                    height:20px;
+                                    background-color:#414042;
+                                    border-radius:20px;"
+                            matTooltip="Add New Model with Series">
+
+                      <i class="fa fa-plus"></i>&nbsp;Add New Capture
+
+                    </button>
+
+                  </div>
+                </div>
+
+                <!-- TABLE: TABLA MODELOS/SERIES -->
+                <div class="row">
+                  <div class="col">
+
+                    <!-- TABLE: TABLA MODELOS/SERIES -->
+                    <div style="margin-top:10px;">
+
+                      <!-- TABLE: COLUMNAS -->
+                      <table class="table">
+
+                        <thead>
+                          <tr style="text-align:left;">
+
+                            <th>
+                              <i class="fa fa-list-ul"></i>&nbsp;Model
+                            </th>
+
+                            <th>
+                              <i class="fa fa-calculator"></i>&nbsp;Quantity
+                            </th>
+
+                            <th>
+                              <i class="fa fa-align-left"></i>&nbsp;Series
+                            </th>
+
+                          </tr>
+                        </thead>
+
+                      </table>
+
+                      <!-- TABLE: LISTADO DE MODELS/SERIES CAPTURADAS EN BD -->
+                      <table class="table" style="overflow-y:auto; height:100px;
+                                                  display:block; margin-top:-20px;
+                                                  border-radius:10px;">
+
+                        <tbody>
+
+                          @for ( actualRow of dtModeloSeries; track actualRow ){
+
+                          <tr style="text-align:left;">
+                            <td style="width:400px;">{{ actualRow.RES_MODEL }}</td>
+                            <td style="width:400px;">{{ actualRow.RES_QUANTITY }}</td>
+                            <td style="width:300px;">
+
+                              <button mat-flat-button
+                                      (click)="btnModelSeriesCapture_Click(2);"
+                                      style=" width: 120px; font-size:11px;
+                                              background-color:#808285;
+                                              border-radius:20px;"
+                                      matTooltip="View Series for {{ actualRow.RES_MODEL }}">
+
+                                <i class="fa fa-list"></i>&nbsp;View Series
+
+                              </button>
+
+                            </td>
+
+                          </tr>
+
+                          }
+
+                        </tbody>
+
+                      </table>
+
+                      <!-- TABLE: NUEVA CAPTURA -->
+                      @if( _IsNewCapture ){
+                      <table style="margin-top:-13px; display: block; border-radius:15px; width:480px;">
+
+                        <thead>
+                          <tr style="text-align:left;">
+
+                            <!-- COMBOBOX: MODELOS -->
+                            <td>
+
+                              <select class="form-control valid"
+                                      style="width: 200px; margin-left:10px;">
+
+                                <option value="" selected>Select one</option>
+
+                                @for ( actualRow of dtModels; track actualRow ){
+
+                                  <option [value]="actualRow.RES_MODEL_ID">{{ actualRow.RES_DESCRIPCION }}</option>
+
+                                }
+
+                              </select>
+
+                            </td>
+
+                            <!-- TEXTBOX: CANTIDAD -->
+                            <td>
+                              <input type="number" class="form-control"
+                                     style="width: 50px; height:30px; margin-left:40px;" disabled />
+                            </td>
+
+                            <!-- BUTTON: AGREGAR SERIES -->
+                            <td>
+
+                              <button mat-flat-button
+                                      (click)="btnModelSeriesCapture_Click(1);"
+                                      style=" width: 120px; font-size:11px;
+                                              background-color:#808285;
+                                              border-radius:20px; margin-left:50px;"
+                                      matTooltip="Capture Series for actualRow.RES_AUTHORIZE_ID">
+
+                                <i class="fa fa-plus"></i>&nbsp;Add Series
+
+                              </button>
+
+                            </td>
+
+                            <!-- BUTTON: AGREGAR CAPTURA -->
+                            <td>
+
+                              <button mat-flat-button disabled
+                                      (click)="btnModelSeriesCapture_Click(3);"
+                                      style=" width: 50px; font-size:11px;
+                                              background-color:#414042;
+                                              border-radius:20px; margin-left:30px;"
+                                      matTooltip="Add Capture">
+
+                                <i class="fa fa-angle-double-right" style="font-size:24px"></i>
+
+                              </button>
+
+                            </td>
+
+                          </tr>
+                        </thead>
+
+                      </table>
+                      }
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col">
+                <div class="row"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- BUTTONS: CREAR SOLICITUD, LIMPIAR CAMPOS-->
+          <div class="col-3">
+
+            <div class="row">
+
+              <!-- BUTTONS: CREAR SOLICITUD, LIMPIAR CAMPOS-->
+              <div class="col">
+                <div class="row">
+
+                  <!-- BOTON: CREAR SOLICITUD -->
+                  <div class="col-1">
+
+                    <button mat-flat-button
+                            (click)="btnCreate_Click();"
+                            style="width: 120px; margin-top:47px;
+                                   background-color:#AD1A1A;
+                                   border-radius:20px;"
+                            matTooltip="Create New Request">
+
+                      <i class="fa fa-plus"></i>&nbsp;Create
+
+                    </button>
+
+                  </div>
+
+                  <!-- BOTON: LIMPIAR CAMPOS -->
+                  <div class="col-1">
+
+                    <button mat-flat-button
+                            style="width: 120px; margin-top: 47px;
+                                   margin-left:120px;
+                                   background-color:#bcbec0;
+                                   border-radius:20px;
+                                   color:#414042;"
+                            matTooltip="Clear Fields"
+                            (click)="BtnLimpiar_OnClick();">
+
+                      <i class="fa fa-eraser"></i> Clear
+
+                    </button>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </mat-card-content>
+
+</mat-card>
+
+<br />
+
+<!-- SECCION: TABLA REQUESTS CREADAS -->
+<mat-card style="color:black;">
+
+  <!-- PANEL HEADER: HEADER CON TITULO DE SECCION -->
+  <mat-card-header style="font-size:16px; opacity:0.6;">
+
+    <div class="row" style="width:100%;">
+
+      <div class="col">
+
+        <i class="fa fa-search"></i>&nbsp;<strong>Requests</strong>
+
+      </div>
+
+      <div class="col"></div>
+
+      <div class="col" style="text-align:right;">
+
+      </div>
+
+    </div>
+
+  </mat-card-header>
+
+  <br />
+
+  <mat-card-content>
+
+    <!-- INPUT / PAGINATOR -->
+    <div class="row">
+
+      <!-- INPUT: BUSQUEDA -->
+      <div class="col busqueda">
+
+        <!-- INPUT: BUSQUEDA -->
+        <mat-form-field appearance="outline" style="width:600px; margin-top:2px;">
+          <input matInput style=" transform: scale(1.5);
+                                  font-size: 16px;
+                                  margin-left: 140px;"
+                 placeholder="Type to Search {{ _BusquedaPlaceHolder }}"
+                 [(ngModel)]="_Busqueda"
+                 (input)="txtBuscar_OnKeyDown()" />
+        </mat-form-field>
+
+      </div>
+
+      <!-- PAGINATOR: LISTA DE REQUESTS DIVIDIDA EN PAGINAS -->
+      <div class="col">
+
+        <!-- PAGINATOR: LISTA DE REQUESTS DIVIDIDA EN PAGINAS -->
+        <mat-paginator #paginator
+                       [pageSize]="aiPageSize"
+                       [pageSizeOptions]="[5, 10, 20]"
+                       [showFirstLastButtons]="true"
+                       [length]="aiTotalSize"
+                       [pageIndex]="aiCurrentPage"
+                       (page)="matPage_Change($event)"
+                       style="background:#AD1A1A">
+
+        </mat-paginator>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE: TABLA REQUESTS CON ORDENAMIENTOS matSort -->
+    <div class="mat-elevation-z8 table-responsive">
+
+      <table class="table table-striped hover" matSort (matSortChange)="SortingTable($event)">
+
+        <!-- TABLE: COLUMNAS -->
+        <thead>
+          <tr style="text-align:left;">
+
+            <th mat-sort-header="Id">
+              <i class="fa fa-list-ul"></i>&nbsp;Id
+            </th>
+
+            <th mat-sort-header="IdRMA">
+              <i class="fa fa-list-ul"></i>&nbsp;Id RMA
+            </th>
+
+            <th mat-sort-header="Ticket">
+              <i class="fa fa-list-ul"></i>&nbsp;#Ticket
+            </th>
+
+            <th mat-sort-header="Customer">
+              <i class="fa fa-list-ul"></i>&nbsp;Customer
+            </th>
+
+            <th mat-sort-header="ReturnWarehouse">
+              <i class="fa fa-list-ul"></i>&nbsp;Return Warehouse
+            </th>
+
+            <th mat-sort-header="Comments">
+              <i class="fa fa-list-ul"></i>&nbsp;Comments
+            </th>
+
+            <th mat-sort-header="Status">
+              <i class="fa fa-calculator"></i>&nbsp;Status
+            </th>
+
+            <th mat-sort-header="CreationDate">
+              <i class="fa fa-hashtag"></i>&nbsp;CreationDate
+            </th>
+
+            <th>
+              <i class="fa fa-align-left"></i>&nbsp;Actions
+            </th>
+
+          </tr>
+        </thead>
+
+        <!-- TABLE: LISTADO DE REQUESTS CREADAS EN BD -->
+        <tbody>
+
+          <tr><mat-divider></mat-divider></tr>
+
+          @for ( actualRow of dtDatos; track actualRow ){
+
+          <tr style="text-align:left;">
+            <td>{{ actualRow.RES_AUTHORIZE_ID }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ actualRow.RES_LOCATION }}</td>
+            <td>{{ actualRow.RES_USER }}</td>
+            <td></td>
+            <td>{{ actualRow.RES_CREATION_DATE }}</td>
+            <td>
+
+              <button mat-mini-fab
+                      style="background-color: #AD1A1A;"
+                      matTooltip="Delete Authorize"
+                      (click)="BtnEliminar_OnClick(actualRow.RES_AUTHORIZE_ID);">
+                <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
+              </button>
+
+            </td>
+
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- --------------------------------------- -->
+
+  </mat-card-content>
+
+</mat-card>
+

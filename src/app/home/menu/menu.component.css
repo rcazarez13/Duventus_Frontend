@@ -1,0 +1,57 @@
+
+.example-card {
+  max-width: 400px;
+  background-color: dimgray;
+}
+
+mat-toolbar {
+  background-color: white;
+}
+
+mat-card {
+  background-color: white;
+}
+
+mat-drawer {
+  box-shadow: 1px 1px 5px 1px rgba(32,32,32,0.1);
+}
+
+.sidenav-container {
+  position: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+  min-height: 100vh;
+}
+
+.mirage_logo_solo {
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.mirage_logo_largo {
+  width: 192px;
+  height: 45px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.animacion-entrada-menus {
+  animation: anim-entrada 0.25s linear 0s 1 normal none;
+}
+
+@keyframes anim-entrada {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+  }
+}

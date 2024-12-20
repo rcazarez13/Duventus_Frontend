@@ -1,0 +1,335 @@
+<!-- SECCION: FILTROS -->
+<mat-card style="color:black; height:100px;">
+
+  <!-- PANEL HEADER: HEADER CON TITULO DE SECCION -->
+  <mat-card-header style="font-size:16px; opacity:0.6;">
+    <i class="fa fa-filter w3-large"></i>&nbsp;<strong>Filters</strong>
+  </mat-card-header>
+
+  <br />
+
+  <!-- PANEL: BUSQUEDA / FILTROS -->
+  <div class="row" style="margin-left:20px;">
+
+    <div class="col">
+
+      <!-- INPUT: BUSQUEDA, COMBOBOX: STATUS -->
+      <div class="row">
+
+        <!-- INPUT: BUSQUEDA -->
+
+        <!-- <div class="col"> -->
+          <!--
+          <i class="fa fa-binoculars" style="opacity:0.6;"></i>
+          &nbsp;<strong style="opacity:0.6;">Search: </strong>
+
+          <input placeholder="Type to Search {{ _BusquedaPlaceHolder }}"
+                 style="width:300px; margin-top:5px;"
+                 [(ngModel)]="_Busqueda"
+                 (input)="txtBuscar_OnKeyDown()" />
+
+           -->
+
+          <!-- RADIO BUTTONS: TIPO BUSQUEDA ( Se solicito quitarlos ) -->
+          <!--
+            <mat-radio-group [(ngModel)]="_TipoBusqueda">
+
+              <mat-radio-button (click)="optBuscar_Click(1)"
+                                [value]="1"
+                                color="primary">
+                  <strong style="color:black; opacity:0.7">Name</strong>
+              </mat-radio-button>
+
+              <mat-radio-button (click)="optBuscar_Click(2)"
+                                [value]="2"
+                                color="primary">
+                  <strong style="color:black; opacity:0.7" >Email</strong>
+              </mat-radio-button>
+
+            </mat-radio-group>
+          -->
+
+        <!-- </div> -->         
+
+        <!-- COMBOBOX: STATUS -->
+        <div class="col">
+
+          <div class="row" >
+
+            <strong style="margin-left: 5px; font-size:16px; opacity:0.7;">
+              <i class="fa fa-bullseye w3-large"></i>&nbsp;Status:</strong>
+              <select class="form-control" [(ngModel)]="_Status"
+                      (change)="cbxStatus_OnChange()"
+                      style="margin-left: 110px; margin-top:-5px; width: 200px; position:absolute;">
+
+                <option [value]="0" style="font-size:14px;">Active</option>
+                <option [value]="1" style="font-size:14px;">Delete</option>
+                <option [value]="2" style="font-size:14px;">Alls</option>
+
+              </select>       
+
+          </div>
+
+          <!--
+            <mat-form-field style=" transform: scale(.50);
+                                    width: 300px;
+                                    margin-left: -65px;
+                                    margin-top: -20px; "
+                            color="accent"
+                            appearance="fill">
+              <mat-select required [(value)]="_Status"
+                          (selectionChange)="cbxStatus_OnChange()"
+                          class="prueba"
+                          style="font-size: 26px;">
+
+                <mat-option [value]="0" style="font-size:14px;">Active</mat-option>
+                <mat-option [value]="1" style="font-size:14px;">Delete</mat-option>
+                <mat-option [value]="2" style="font-size:14px;">Alls</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          -->
+
+        </div>
+
+      </div>
+
+      <br />
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <!-- PANEL: FILTROS -->
+  <!--
+  <mat-card-content>
+
+    <mat-expansion-panel class="filters-card">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Status: {{ _StatusDescripcion }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Employee Status
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-radio-group [(ngModel)]="_Status">
+
+        <mat-radio-button (click)="optRadio_Click(0)" [value]="0">Active</mat-radio-button>
+        <mat-radio-button (click)="optRadio_Click(1)" [value]="1">Delete</mat-radio-button>
+        <mat-radio-button (click)="optRadio_Click(2)" [value]="2">Alls</mat-radio-button>
+
+      </mat-radio-group>
+
+    </mat-expansion-panel>
+
+
+    <div class="row">
+      <div class="col">
+
+      </div>
+    </div>
+
+  </mat-card-content>
+  -->
+
+</mat-card>
+
+<br />
+
+<!-- SECCION: TABLA USUARIOS -->
+<mat-card style="color:black;">
+
+  <!-- PANEL HEADER: HEADER CON TITULO DE SECCION Y BOTON DE CREACION DE USUARIO NUEVO -->
+  <mat-card-header style="font-size:16px;">
+
+    <div class="row" style="width:100%;">
+
+      <div class="col" style="font-size:16px; opacity:0.6;">
+
+        <i class="fa fa-users w3-large"></i>&nbsp;<strong>Users</strong>
+
+      </div>
+
+      <div class="col"></div>
+
+      <div class="col" style="text-align:right;">
+
+        <!-- BOTON: CREAR USUARIO NUEVO -->
+        <button mat-mini-fab
+                style="margin-top: -10px; margin-right: -30px; background-color: #AD1A1A;"
+                matTooltip="Create a New User"
+                (click)="btnActions_Click(0,'', '');">
+          <i class="fa fa-user-plus w3-large" style="color:white;"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </mat-card-header>
+
+  <br />
+
+  <mat-card-content>
+
+    <!-- INPUT / PAGINATOR -->
+    <div class="row">
+
+      <!-- INPUT: BUSQUEDA -->
+      <div class="col busqueda">
+
+        <!-- INPUT: BUSQUEDA -->
+        <mat-form-field appearance="outline" style="width:600px; margin-top:2px;">
+
+          <input matInput style="  transform: scale(1.5);
+                                      font-size: 16px;
+                                      margin-left: 140px;"
+                 placeholder="Type to Search {{ _BusquedaPlaceHolder }}"
+                 [(ngModel)]="_Busqueda"
+                 (input)="txtBuscar_OnKeyDown()" />
+        </mat-form-field>
+
+      </div>
+
+      <!-- PAGINATOR: LISTA DE USUARIOS DIVIDIDA EN PAGINAS -->
+      <div class="col">
+
+        <!-- PAGINATOR: LISTA DE USUARIOS DIVIDIDA EN PAGINAS -->
+        <mat-paginator #paginator
+                        [pageSize]="aiPageSize"
+                        [pageSizeOptions]="[5, 10, 20]"
+                        [showFirstLastButtons]="true"
+                        [length]="aiTotalSize"
+                        [pageIndex]="aiCurrentPage"
+                        (page)="matPage_Change($event)"
+                        style="background:#AD1A1A">
+
+        </mat-paginator>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE: TABLA USUARIOS CON ORDENAMIENTOS matSort -->
+    <div class="mat-elevation-z8 table-responsive">
+
+      <table class="table table-striped hover" matSort (matSortChange)="SortingTable($event)">
+
+        <!-- TABLE: COLUMNAS -->
+        <thead>
+          <tr style="text-align:left;">
+
+            <ng-container matColumnDef="No">
+
+              <th mat-sort-header="No">
+                No
+              </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Email">
+
+              <th mat-sort-header="Email">
+                <i class="fa fa-address-card w3-large"></i>&nbsp;Email
+              </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Name">
+
+              <th mat-sort-header="Name">
+                <i class="fa fa-address-card w3-large"></i>&nbsp;Name
+              </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Login">
+
+              <th mat-sort-header="Login">
+                <i class="fa fa-book w3-large"></i>&nbsp;Last Login Session
+              </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+
+              <th mat-sort-header="Status">
+                <i class="fa fa-book w3-large"></i>&nbsp;Status
+              </th>
+
+            </ng-container>
+
+            <th>
+              <i class="fa fa-bullseye w3-large"></i>&nbsp;Actions
+            </th>
+
+          </tr>
+        </thead>
+
+        <!-- TABLE: LISTADO DE USUARIOS EN BD -->
+        <tbody>
+
+          <tr><mat-divider></mat-divider></tr>
+
+          @for ( actualRow of dtDatos; track actualRow ){
+
+          <tr style="text-align:left;">
+            <td>{{ actualRow.UserId }}</td>
+            <td>{{ actualRow.Email }}</td>
+            <td>{{ actualRow.FirstName }} {{ actualRow.LastName }}</td>
+            <td>{{ actualRow.LastLoginDatee | date: 'dd MMM yyyy hh:mm a' }}</td>
+            <td>{{ actualRow.Status }}</td>
+
+            <!-- TABLE: BOTONES DE ACCIONES -->
+            <td>
+              <button mat-mini-fab
+                      [matMenuTriggerFor]="menu"
+                      style="background-color: #BCBEC0; "
+                      matTooltip="View Options">
+                <mat-icon>menu</mat-icon>
+              </button>&nbsp;&nbsp;
+              <mat-menu #menu="matMenu">
+
+                <button mat-menu-item (click)="btnActions_Click(1,actualRow.Email, actualRow.Status);">
+                  <i class="fa fa-eye w3-large" style="margin-left:5px;"></i>
+                  <span style="padding-top: 11px;">&nbsp;View</span>
+                </button>
+
+                <button mat-menu-item (click)="btnActions_Click(2,actualRow.Email, actualRow.Status);">
+                  <i class="fa fa-edit w3-large" style="margin-left:5px;"></i>
+                  <span style="padding-top: 11px;">&nbsp;Edit</span>
+                </button>
+
+              </mat-menu>
+
+              <button mat-mini-fab
+                      [ngStyle]="{'color':'white'}"
+                      style="background-color:#ad1a1a;"
+                      matTooltip="Delete User"
+                      (click)="btnActions_Click(3,actualRow.Email, actualRow.Status);">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+            </td>
+
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- --------------------------------------- -->
+
+  </mat-card-content>
+
+</mat-card>
+

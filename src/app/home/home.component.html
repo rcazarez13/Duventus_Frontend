@@ -1,31 +1,38 @@
-<style>
-  .duventus-logo {
-    max-width: 100%;
-    height: auto;
-    width: 300px;
-  }
-  @media (max-width: 768px) {
-      .duventus-logo {
-        width: 200px;
-      }
-  }
-  @media (max-width: 576px) {
-    .duventus-logo {
-      width: 150px;
-    }
-  }
 
-</style>
-<div class="d-flex justify-content-center align-items min-vh-100">
-  <div
-    class="container p-4 bg-light rounded shadow"
-    style="max-width: 1100px; width: 100%; margin-top: 20px; margin-bottom: 20px;">
+<!-- PAGINA HOME SE USARA COMO LAYOUT BASE -->
 
-    <div class="bg-white p-3 mb-4 rounded shadow-sm text-center">
-      <img src="https://cdn.prod.website-files.com/6518a52fadf2a346d37c5aa6/654537e3f837db189ede0155_Duventus%20logo.webp" alt="Logo de DuVentus" class="duventus-logo">
-    </div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <app-employee></app-employee>
+
+<link href="../Content/materialize.min.css" rel="stylesheet">
+<link href="../Content/bootstrap-4.1.3-dist/bootstrap.min.css" rel="stylesheet">
+<link href="../Content/Site.css" rel="stylesheet">
+<link href="../Content/app-assets/css/pages/login.css" rel="stylesheet" />
+
+<!-- PRELOADER -->
+<div class="loader_main">
+  <div class="loader_logo"></div>
+</div>
+
+<router-outlet></router-outlet>
+
+<!-- SECCION FOOTER: TEXTO COPYRIGHT -->
+<div class="row">
+  <div class="col">
+
+    <table>
+      <tr>
+        <td style="text-align:center;">
+          <span>
+            Copyright &copy; {{ aiYear }} HVAC Mirage <a href="{{ asURL_HvacMirage }}" target="_blank">HVAC Mirage</a> All Rights Reserved.<br />
+            Designed and Developed by <a href="{{ asURL_DuVentus }}">DuVENTUS</a>
+          </span>
+        </td>
+      </tr>
+    </table>
 
   </div>
 </div>

@@ -1,0 +1,101 @@
+<!-- SECCION: FILTROS -->
+<div style="background-color: #bcbec0;">
+  <mat-card style="background-color:#f1f2f2; color:#414042;">
+
+    <!-- PANEL HEADER: HEADER CON TITULO DE SECCION Y BOTON PARA CERRAR VENTANA -->
+    <mat-card-header style="font-size:16px;">
+
+      <div class="row" style="width:100%;">
+
+        <div class="col">
+
+          <i style="color:#414042;" class="fa fa-user w3-large"></i>
+          &nbsp;<strong style="color:#414042;">Confirm</strong>
+
+        </div>
+
+        <div class="col"></div>
+
+        <div class="col" style="text-align:right;">
+
+          <!-- BOTON: CERRAR VENTANA -->
+          <button mat-mini-fab
+                  style="width: 32px; height: 32px;
+                         margin-top: -10px; margin-right: -30px;
+                         background-color:#ad1a1a;"
+                  matTooltip="Close window"
+                  (click)="Close();">
+            <i class="fa fa-close w3-small" style="color:white;"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+    </mat-card-header>
+
+    <br />
+
+    <!-- PANEL: TITULO, LEYENDA -->
+    <mat-card-content>
+
+      <!-- PANEL: TITULO, LEYENDA -->
+      <div class="row">
+        <div class="col">
+
+              <table>
+
+                <!-- CAMPOS: TEXTO DE LA VENTANA -->
+                <tr>
+
+                  <!-- COLUMNA #01 -->
+                  <td valign="top">
+
+                    <div class="row" style="width:110%;">
+
+                      <div class="col" style="margin-left:30px;">
+
+                        <strong style="font-size:20px;">{{ _Titulo }}</strong>
+                        <p>{{ _Texto }}</p>
+
+                      </div>
+
+                    </div>
+
+                    <!-- BOTONES: OK, CANCEL -->
+                    <div class="row" style="margin-left:50px; margin-top:25px;">
+
+                        <!-- BOTON: OK -->
+                        <button mat-flat-button
+                                style="margin-right: 10px; width: 100px;
+                                       background-color:#ad1a1a;"
+                                color="warn"
+                                (click)="BtnOk_OnClick();">
+                          <i class="fa fa-check-square-o"></i> Ok
+                        </button>
+
+                        <!-- BOTON: CANCEL -->
+                        <button mat-flat-button
+                                style="margin-right: -60px; width: 100px;
+                                       background-color:#bcbec0;
+                                       color:#414042;"
+                                (click)="BtnCancel_OnClick();">
+                          <i class="fa fa-close"></i> Cancel
+                        </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              </table>
+
+        </div>
+      </div>
+
+    </mat-card-content>
+
+
+  </mat-card>
+</div>

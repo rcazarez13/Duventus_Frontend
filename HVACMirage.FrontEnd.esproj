@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.94-alpha">
+  <PropertyGroup>
+    <StartupCommand>npm start</StartupCommand>
+    <JavaScriptTestFramework>Jasmine</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Command to create an optimized build of the project that's ready for publishing -->
+    <ProductionBuildCommand>npm run build</ProductionBuildCommand>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\HVACMirage.FrontEnd</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptConfiguration Remove="src\app\home\menu\warrantys\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\home\menu\warrantys\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptConfiguration Remove="src\app\home\menu\menu-guarantee-certificates\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\home\menu\menu-guarantee-certificates\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\home\menu\menu-configuration\config-users\1y3pdqhz.2gc~" />
+  </ItemGroup>
+</Project>
